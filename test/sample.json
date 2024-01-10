@@ -1,0 +1,74 @@
+{
+  "0001": {
+    "subjectName": "Mathematics 1",
+    "totalTimes": 2,
+    "EachLectureInformation": [
+      {
+        "session": 1,
+        "maxScore": 0,
+        "attendanceCount": 0,
+        "examTaken": false
+      },
+      {
+        "session": 2,
+        "maxScore": 0,
+        "attendanceCount": 0,
+        "examTaken": false
+      },
+      {
+        "session": 3,
+        "maxScore": 0,
+        "attendanceCount": 0,
+        "examTaken": false
+      },
+      {
+        "session": 4,
+        "maxScore": 0,
+        "attendanceCount": 0,
+        "examTaken": false
+      },
+      {
+        "session": 5,
+        "maxScore": 0,
+        "attendanceCount": 0,
+        "examTaken": false
+      },
+      {
+        "session": 6,
+        "maxScore": 0,
+        "attendanceCount": 0,
+        "examTaken": false
+      },
+      {
+        "session": 7,
+        "maxScore": 0,
+        "attendanceCount": 0,
+        "examTaken": false
+      },
+      {
+        "session": 8,
+        "maxScore": 0,
+        "attendanceCount": 0,
+        "examTaken": false
+      }
+    ]
+  },
+  "1000": {
+    "subjectName": "Language",
+    "totalTimes": 2,
+    "eachLectureInformation": [
+      {
+        "session": 1,
+        "maxScore": 0,
+        "attendanceCount": 0,
+        "examTaken": false
+      },
+      {
+        "session": 2,
+        "maxScore": 0,
+        "attendanceCount": 0,
+        "examTaken": false
+      }
+    ]
+  }
+}
