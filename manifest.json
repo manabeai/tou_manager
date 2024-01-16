@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "TOU manager",
   "version": "1.0",
-  "permissions": ["storage", "activeTab", "https://room.internet.ac.jp/*", "webNavigation"],
+  "permissions": ["storage", "activeTab", "webNavigation"],
   "background": {
     "service_worker": "./src/Background/background.js"
   },
