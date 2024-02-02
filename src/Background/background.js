@@ -70,7 +70,7 @@ chrome.runtime.onMessage.addListener(
 
       // もしまだ取得してない学期だったら取得してもらう
       chrome.storage.local.get(current_term,function(data) {
-        if (data[current_term] === undefined) {
+        if (data[current_term] === undefined || data[current_term] === '') {
 
           let subject_JSON = generateInitialJSON(request.subjectDict);
           console.log(JSON.stringify(subject_JSON, null, 2));
