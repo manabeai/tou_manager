@@ -46,6 +46,8 @@ window.onpopstate = function(event) {
     } else if (urlPattern.test(window.location.href)){
 
       setTimeout(function() {
+
+      console.log('得点を更新します');
       const currentURL = window.location.href
       const subject_ID = resultPage.exec(currentURL)[1];
       
@@ -67,7 +69,14 @@ window.onpopstate = function(event) {
         currentSession: currentSession,
         correctPoint: correctPoint,
         subject_ID: subject_ID
+      },
+      
+      function(response) {
+        if (response && response.message === 'updated_score') {
+          alert('得点状況をを更新しました');
+        }
       });
     }, 5000);
   }
 };
+

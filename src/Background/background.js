@@ -64,7 +64,7 @@ function generateInitialJSON(inputDict) {
 const current_term = getCurrentTerm();
 
 chrome.runtime.onMessage.addListener(
-  function(request) {
+  function(request,sender, sendResponse) {
     if (request.message === 'open_progress') {
       console.log('contentがprogressを開いた');
 
@@ -79,6 +79,9 @@ chrome.runtime.onMessage.addListener(
           chrome.storage.local.set({[current_term]: subject_JSON}, function() {
             console.log('提出状況を初期化して保存した');
           });
+
+          sendResponse({message: 'initialized_score'});
+
 
         } else {
           console.log('キーがあるからなにもしない');
@@ -99,7 +102,11 @@ chrome.runtime.onMessage.addListener(
 
         chrome.storage.local.set({[current_term]: data[current_term]}, function() {
           console.log('第' + currentSession + '回。最大得点を' + sessionData['maxScore'] + 'に');
+          // chrome.runtime.sendMessage({message: 'updated_score'});
+        });
+
+        sendResponse({message: 'updated_score'});
       });
-    });
+    }
   }
-});
+);
