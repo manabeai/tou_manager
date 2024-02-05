@@ -1,5 +1,4 @@
 // 現在の学期を判定する関数
-// #日付部分は変更しやすくしたい
 function getCurrentTerm(year = new Date().getFullYear(), month = new Date().getMonth() + 1, day = new Date().getDate()) {
   const currentDate = new Date(year, month - 1, day);
 
@@ -31,7 +30,7 @@ function getCurrentTerm(year = new Date().getFullYear(), month = new Date().getM
   }
 }
 
-// IDをkeyとして初期化
+// IDをkeyとしてDBを初期化する関数
 function generateInitialJSON(inputDict) {
   const outputJSON = {};
 
@@ -67,8 +66,6 @@ chrome.runtime.onMessage.addListener(
   function(request,sender, sendResponse) {
     if (request.message === 'open_progress') {
       console.log('contentがprogressを開いた');
-
-      // もしまだ取得してない学期だったら取得してもらう
       chrome.storage.local.get(current_term,function(data) {
         if (data[current_term] === undefined || data[current_term] === '') {
 
@@ -78,15 +75,13 @@ chrome.runtime.onMessage.addListener(
           // chrome.storageに保存する
           chrome.storage.local.set({[current_term]: subject_JSON}, function() {
             console.log('提出状況を初期化して保存した');
+            sendResponse({message: 'initialized_score'});
           });
-
-          sendResponse({message: 'initialized_score'});
-
-
         } else {
           console.log('キーがあるからなにもしない');
         }
       });
+      return true;
     
     // 最新の得点を受け取って最高得点と比較し更新
     } else if (request.message === 'finished_quiz') {
@@ -102,11 +97,9 @@ chrome.runtime.onMessage.addListener(
 
         chrome.storage.local.set({[current_term]: data[current_term]}, function() {
           console.log('第' + currentSession + '回。最大得点を' + sessionData['maxScore'] + 'に');
-          // chrome.runtime.sendMessage({message: 'updated_score'});
         });
-
-        sendResponse({message: 'updated_score'});
       });
+      sendResponse({message: 'updated_score'});
     }
   }
 );

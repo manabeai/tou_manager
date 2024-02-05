@@ -1,11 +1,10 @@
 
-// 履修科目の辞書を作成 key=ID value=科目名
+// 履修科目の辞書を作成する関数 key=ID value=科目名
 function createSubjectDict() {
   var elements = Array.from(document.getElementsByClassName('progressCircle'));
   var subjects = elements.filter(element => element.textContent.trim() === '1');
   var subjectDict = {};
 
-  // #保守性のためにparse等でリファクタしたほうがよさそう
   subjects.forEach((subject) => {
     const urlParts = subject.href.split('/');
     const subject_ID = urlParts[5];
@@ -39,7 +38,13 @@ window.onpopstate = function(event) {
         console.log(subjectDict);
 
         // 講義情報の初期化はbackgroundにわたす
-        chrome.runtime.sendMessage({message: 'open_progress', subjectDict: subjectDict});
+        chrome.runtime.sendMessage({message: 'open_progress', subjectDict: subjectDict}, 
+          function(response) {
+            if (response && response.message === 'initialized_score') {
+              alert('得点状況を初期化しました')
+            }
+          }
+        );
       }, 7000);
     
     // 結果画面が出た時に得点、回数、科目IDを取得
@@ -72,8 +77,8 @@ window.onpopstate = function(event) {
       },
       
       function(response) {
-        if (response && response.message === 'updated_score') {
-          alert('得点状況をを更新しました');
+        if (response) {
+          alert('得点状況を更新しました');
         }
       });
     }, 5000);
