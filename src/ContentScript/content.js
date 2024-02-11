@@ -60,13 +60,13 @@ window.onpopstate = function(event) {
       const titleElement = document.querySelector('.tou-title');
       const titleText = titleElement.textContent;
       const currentSession = extractNumberFromString(titleText);
-      console.log(currentSession);
+      console.log('第' + currentSession + '回');
       
       // 得点を取得
       const correctPointElement = document.querySelector('.correct-num span');
       const correctPointText = correctPointElement.textContent;
       const correctPoint = parseInt(correctPointText, 10);
-      console.log(correctPoint); 
+      console.log(correctPoint + '点'); 
       
       // 最大得点の更新はバックグラウンドに渡す
       chrome.runtime.sendMessage({

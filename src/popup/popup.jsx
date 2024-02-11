@@ -2,7 +2,6 @@ import React from 'react';
 import * as ReactDOM from 'react-dom/client';
 
 // 現在の学期を判定する関数
-// # 日付部分は外部から読み込みたい
 function getCurrentTerm(year = new Date().getFullYear(), month = new Date().getMonth() + 1, day = new Date().getDate()) {
   const currentDate = new Date(year, month - 1, day);
 
@@ -37,7 +36,7 @@ function getCurrentTerm(year = new Date().getFullYear(), month = new Date().getM
 const CurrentTerm = getCurrentTerm();
 let SubjectData;
 
-// 一回の提出状況を示すマス
+// 一回の得点状況を示すマス
 function Square(props) {
   return <button className="square"> {props.score} </button>;
 }
@@ -47,8 +46,7 @@ function Check_list(props) {
   
   const maxScores = SubjectData[props.subjectKey]['eachLectureInformation'].map(info => info.maxScore);
   const subjectName = SubjectData[props.subjectKey]['subjectName'];
-  // console.log(maxScores);
-  
+
   return (
     <div>
       <div>

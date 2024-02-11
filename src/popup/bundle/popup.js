@@ -33472,7 +33472,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 // 現在の学期を判定する関数
-// # 日付部分は外部から読み込みたい
 function getCurrentTerm() {
   var year = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new Date().getFullYear();
   var month = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : new Date().getMonth() + 1;
@@ -33503,7 +33502,7 @@ function getCurrentTerm() {
 var CurrentTerm = getCurrentTerm();
 var SubjectData;
 
-// 一回の提出状況を示すマス
+// 一回の得点状況を示すマス
 function Square(props) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "square"
@@ -33516,8 +33515,6 @@ function Check_list(props) {
     return info.maxScore;
   });
   var subjectName = SubjectData[props.subjectKey]['subjectName'];
-  // console.log(maxScores);
-
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, subjectName)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     style: {
       display: 'flex',
