@@ -25,7 +25,6 @@ function extractNumberFromString(str) {
   return null;
 }
 
-const urlPattern = /https:\/\/room\.internet\.ac\.jp\/#\/courses\/\d+\/sections\/\d+\/lectures\/\d+\/quiz\/result/;
 const resultPage = /https:\/\/room\.internet\.ac\.jp\/#\/courses\/(\d+)\/sections\/\d+\/lectures\/\d+\/quiz\/result/;
 
 // progress画面を開いた際に科目名とIDを取得する
@@ -48,7 +47,7 @@ window.onpopstate = function(event) {
       }, 7000);
     
     // 結果画面が出た時に得点、回数、科目IDを取得
-    } else if (urlPattern.test(window.location.href)){
+    } else if (resultPage.test(window.location.href)){
 
       setTimeout(function() {
 
