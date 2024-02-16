@@ -33503,14 +33503,14 @@ var CurrentTerm = getCurrentTerm();
 var SubjectData;
 
 // 一回の得点状況を示すマス
-function Square(props) {
+var Square = function Square(props) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "square"
   }, " ", props.score, " ");
-}
+};
 
 // 一つの科目と全8回の講義をまとめたもの
-function Check_list(props) {
+var Check_list = function Check_list(props) {
   var maxScores = SubjectData[props.subjectKey]['eachLectureInformation'].map(function (info) {
     return info.maxScore;
   });
@@ -33526,10 +33526,10 @@ function Check_list(props) {
       score: score
     });
   })));
-}
+};
 
 // すべての科目をまとめる
-function Subjects() {
+var Subjects = function Subjects() {
   var subjectKeys = Object.keys(SubjectData);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, subjectKeys.map(function (subjectKey) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -33538,7 +33538,7 @@ function Subjects() {
       subjectKey: subjectKey
     }));
   }));
-}
+};
 
 // storageからデータを取得する
 function getSubjectData() {

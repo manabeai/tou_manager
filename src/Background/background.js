@@ -67,7 +67,7 @@ chrome.runtime.onMessage.addListener(
     if (request.message === 'open_progress') {
       console.log('contentがprogressを開いた');
       chrome.storage.local.get(current_term,function(data) {
-        if (data[current_term] === undefined || data[current_term] === '') {
+        if (data[current_term] === undefined || data[current_term] === '' || data[current_term + '_initialized'] == undefined) {
 
           let subject_JSON = generateInitialJSON(request.subjectDict);
           console.log(JSON.stringify(subject_JSON, null, 2));
@@ -77,6 +77,8 @@ chrome.runtime.onMessage.addListener(
             console.log('提出状況を初期化して保存した');
             sendResponse({message: 'initialized_score'});
           });
+          
+          chrome.storage.local.set({[current_term + '_initialized']: 'yes'});
         } else {
           console.log('キーがあるからなにもしない');
         }
