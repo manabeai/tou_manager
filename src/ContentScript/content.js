@@ -1,6 +1,6 @@
 
 // 履修科目の辞書を作成する関数 key=ID value=科目名
-function createSubjectDict() {
+const createSubjectDict = function() {
   var elements = Array.from(document.getElementsByClassName('progressCircle'));
   var subjects = elements.filter(element => element.textContent.trim() === '1');
   var subjectDict = {};
@@ -16,7 +16,7 @@ function createSubjectDict() {
   return subjectDict;
 }
 
-function extractNumberFromString(str) {
+const extractNumberFromString = function(str) {
   const numberPattern = /\d+/;
   const numberMatch = str.match(numberPattern);
   if (numberMatch) {

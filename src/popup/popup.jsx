@@ -37,12 +37,12 @@ const CurrentTerm = getCurrentTerm();
 let SubjectData;
 
 // 一回の得点状況を示すマス
-function Square(props) {
+const Square = function(props) {
   return <button className="square"> {props.score} </button>;
 }
 
 // 一つの科目と全8回の講義をまとめたもの
-function Check_list(props) {
+const Check_list = function(props) {
   
   const maxScores = SubjectData[props.subjectKey]['eachLectureInformation'].map(info => info.maxScore);
   const subjectName = SubjectData[props.subjectKey]['subjectName'];
@@ -62,7 +62,7 @@ function Check_list(props) {
 }
 
 // すべての科目をまとめる
-function Subjects() {
+const Subjects = function() {
   const subjectKeys = Object.keys(SubjectData);
 
   return (
